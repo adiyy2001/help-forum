@@ -1,0 +1,36 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__search-input {
+        margin-top: 5%;
+        width: 20%;
+        border: 7px solid #e9ebff;
+        padding: 13px 30px;
+        border-radius: 40px;
+    }
+    &-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 40%;
+        &-box {
+            width: 300px;
+            height: 275px;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            margin-left: 20%;
+            &__description {
+                width: 225px;
+            }
+            &__arrow {
+                position: absolute;
+                bottom: 20px;
+                right: 0;
+            }
+        }
+    }
+}

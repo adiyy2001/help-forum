@@ -8,8 +8,9 @@
 @import 'components/black-button';
 @import 'components/form';
 
-@import 'layout/media';
-@import 'layout/navigation';
+@import 'layout/home/media';
+@import 'layout/home/navigation';
+@import 'layout/home/main-section';
 
 @import 'pages/home';
 
