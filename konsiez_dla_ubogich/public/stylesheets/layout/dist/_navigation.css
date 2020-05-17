@@ -1,0 +1,49 @@
+.menu {
+  display: flex;
+  justify-content: right;
+  margin-right: 90px;
+  margin-top: 25px;
+}
+
+.menu li:first-child {
+  margin-right: auto;
+  margin-left: 44px;
+}
+
+.menu-item {
+  color: #443f3f;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item:not(:first-child) {
+  margin-left: 14px;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.burger span {
+  display: block;
+  height: 3.5px;
+  margin-bottom: 3px;
+  position: relative;
+  background: #443f3f;
+  border-radius: 3px;
+}
+
+.burger span:nth-child(1) {
+  width: 27px;
+}
+
+.burger span:nth-child(2) {
+  width: 33px;
+}
+
+.burger span:nth-child(3) {
+  width: 13px;
+}
