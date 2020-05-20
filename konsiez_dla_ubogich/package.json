@@ -9,8 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
     "express": "^4.17.1",
+    "express-validator": "^3.2.1",
     "hbs": "^4.1.1",
+    "mongoose": "^5.9.14",
     "nodemon": "^2.0.4",
     "pug": "^2.0.4"
   },

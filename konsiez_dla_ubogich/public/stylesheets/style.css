@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+body {
+  min-height: 300px;
+  overflow-y: auto;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -387,9 +392,127 @@ body {
   color: white;
   border: none;
 }
+.black-button span:hover {
+  transition: all 0.3s ease-in-out;
+  color: #21cc46;
+}
 .black-button img {
   margin-right: 5px;
   margin-bottom: 2px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+}
+.form-container .form {
+  border: 5px solid #969bc9;
+  border-radius: 20px;
+  padding: 10px 20px;
+  position: relative;
+}
+.form-container .form .btn {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid #969bc9;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #969bc9;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+  position: absolute;
+  right: 3%;
+}
+.form-container .form .btn:hover {
+  color: #fff;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: #969bc9;
+}
+.form-container .register-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.form-container .register-form {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 70px 70px 70px 70px;
+  width: 650px;
+  height: auto;
+  column-gap: 20px;
+  padding: 10px 20px;
+}
+.form-container .register-form__image {
+  grid-column: 1/2;
+  grid-row: 1/5;
+}
+.form-container .register-form .form-group {
+  width: 100%;
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+.form-container .register-form .form-group input {
+  width: 80%;
+  height: 100%;
+  color: #595f6e;
+  font-size: 12px;
+  border: none;
+  outline: none;
+  padding: 20px 0 5px 2px;
+}
+.form-container .register-form .form-group input:-webkit-autofill, .form-container .register-form .form-group input:-webkit-autofill:hover, .form-container .register-form .form-group input:-webkit-autofill:focus, .form-container .register-form .form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+.form-container .register-form .form-group label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+.form-container .register-form .form-group label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #969bc9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.form-container .register-form .form-group label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+.form-container .register-form .form-group input:focus + .label-name .content-name, .form-container .register-form .form-group input:valid + .label-name .content-name {
+  transform: translatey(-150%);
+  font-size: 14px;
+  color: #969bc9;
+}
+.form-container .register-form .form-group input:focus + .label-name::after, .form-container .register-form .form-group input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+.icon {
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
 }
 
 .menu {
@@ -406,6 +529,15 @@ body {
   color: #443f3f;
   display: flex;
   align-items: center;
+}
+.menu-item a {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+.menu-item a:hover {
+  transition: all 0.3s ease-in-out;
+  color: #21b943;
 }
 .menu-item:not(:first-child) {
   margin-left: 14px;
@@ -448,6 +580,10 @@ body {
   padding: 13px 30px;
   border-radius: 40px;
 }
+.home__search-input:focus {
+  border: 7px solid #6f79e0;
+  transition: border 0.35s ease;
+}
 .home-section {
   display: flex;
   justify-content: space-between;
@@ -470,6 +606,25 @@ body {
   position: absolute;
   bottom: 20px;
   right: 0;
+}
+
+.footer {
+  background-color: #3f3939;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.footer p {
+  margin: 0 7px;
+}
+.footer span {
+  color: #21b943;
 }
 
 /*# sourceMappingURL=style.css.map */

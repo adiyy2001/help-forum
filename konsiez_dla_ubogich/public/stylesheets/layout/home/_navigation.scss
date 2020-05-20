@@ -11,6 +11,15 @@
         color: #443f3f;
         display: flex;
         align-items: center;
+        a {
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+            &:hover {
+                transition: all .3s ease-in-out;
+                color: #21b943;
+            }
+        }
     }
     &-item:not(:first-child) {
         margin-left: 14px;

@@ -1,0 +1,18 @@
+.footer {
+    background-color: #3f3939;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    p {
+        margin: 0 7px;
+    }
+    span {
+        color: #21b943;
+    }
+}

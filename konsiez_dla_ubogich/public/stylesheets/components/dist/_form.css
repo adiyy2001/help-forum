@@ -1,0 +1,129 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+}
+
+.form-container .form {
+  border: 5px solid #969bc9;
+  border-radius: 20px;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.form-container .form .btn {
+  display: inline-block;
+  width: 150px;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid #969bc9;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #969bc9;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+  position: absolute;
+  right: 3%;
+}
+
+.form-container .form .btn:hover {
+  color: #fff;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: #969bc9;
+}
+
+.form-container .register-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-container .register-form {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-template-rows: 70px 70px 70px 70px;
+  width: 650px;
+  height: auto;
+  column-gap: 20px;
+  padding: 10px 20px;
+}
+
+.form-container .register-form__image {
+  grid-column: 1 / 2;
+  grid-row: 1 / 5;
+}
+
+.form-container .register-form .form-group {
+  width: 100%;
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+
+.form-container .register-form .form-group input {
+  width: 80%;
+  height: 100%;
+  color: #595f6e;
+  font-size: 12px;
+  border: none;
+  outline: none;
+  padding: 20px 0 5px 2px;
+}
+
+.form-container .register-form .form-group input:-webkit-autofill, .form-container .register-form .form-group input:-webkit-autofill:hover, .form-container .register-form .form-group input:-webkit-autofill:focus, .form-container .register-form .form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+.form-container .register-form .form-group label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+
+.form-container .register-form .form-group label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #969bc9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.form-container .register-form .form-group label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.form-container .register-form .form-group input:focus + .label-name .content-name,
+.form-container .register-form .form-group input:valid + .label-name .content-name {
+  transform: translatey(-150%);
+  font-size: 14px;
+  color: #969bc9;
+}
+
+.form-container .register-form .form-group input:focus + .label-name::after,
+.form-container .register-form .form-group input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+.icon {
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
+}

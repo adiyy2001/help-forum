@@ -13,6 +13,11 @@
   border-radius: 40px;
 }
 
+.home__search-input:focus {
+  border: 7px solid #6f79e0;
+  transition: border 0.35s ease;
+}
+
 .home-section {
   display: flex;
   justify-content: space-between;

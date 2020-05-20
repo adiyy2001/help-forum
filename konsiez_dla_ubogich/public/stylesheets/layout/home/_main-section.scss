@@ -10,6 +10,10 @@
         padding: 13px 30px;
         border-radius: 40px;
     }
+    &__search-input:focus {
+        border: 7px solid #6f79e0;
+        transition: border 0.35s ease;
+    }
     &-section {
         display: flex;
         justify-content: space-between;

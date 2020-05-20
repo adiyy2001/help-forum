@@ -5,6 +5,10 @@
     background-color: #443f3f;
     color: white;
     border: none;
+    span:hover {
+        transition: all .3s ease-in-out;
+        color: #21cc46;
+    }
     img {
         margin-right: 5px;
         margin-bottom: 2px;
