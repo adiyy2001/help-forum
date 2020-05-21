@@ -1,13 +1,11 @@
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 500px;
 }
 
 .form-container .form {
-  border: 5px solid #969bc9;
+  margin-top: 75px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   padding: 10px 20px;
   position: relative;
@@ -50,7 +48,7 @@
   grid-template-rows: 70px 70px 70px 70px;
   width: 650px;
   height: auto;
-  column-gap: 20px;
+  column-gap: 30px;
   padding: 10px 20px;
 }
 
@@ -59,14 +57,57 @@
   grid-row: 1 / 5;
 }
 
-.form-container .register-form .form-group {
+.icon {
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
+}
+
+.modal {
+  position: absolute;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  left: 40%;
+  top: 3%;
+  animation: modal 2s 1;
+  transition: all 0.5 ease;
+  padding: 20px 30px;
+}
+
+.modal li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.modal button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+@keyframes modal {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.form-group {
   width: 100%;
   position: relative;
   height: 60px;
   overflow: hidden;
 }
 
-.form-container .register-form .form-group input {
+.form-group input.form-control {
   width: 80%;
   height: 100%;
   color: #595f6e;
@@ -76,12 +117,12 @@
   padding: 20px 0 5px 2px;
 }
 
-.form-container .register-form .form-group input:-webkit-autofill, .form-container .register-form .form-group input:-webkit-autofill:hover, .form-container .register-form .form-group input:-webkit-autofill:focus, .form-container .register-form .form-group input:-webkit-autofill:active {
+.form-group input.form-control:-webkit-autofill, .form-group input.form-control:-webkit-autofill:hover, .form-group input.form-control:-webkit-autofill:focus, .form-group input.form-control:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   box-shadow: 0 0 0 30px white inset !important;
 }
 
-.form-container .register-form .form-group label {
+.form-group label.label-name {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -91,7 +132,7 @@
   border-bottom: 1px solid black;
 }
 
-.form-container .register-form .form-group label::after {
+.form-group label.label-name::after {
   content: "";
   position: absolute;
   left: 0;
@@ -103,27 +144,21 @@
   transition: transform 0.3s ease;
 }
 
-.form-container .register-form .form-group label .content-name {
+.form-group label.label-name .content-name {
   position: absolute;
   bottom: 5px;
   left: 0;
   transition: all 0.3s ease;
 }
 
-.form-container .register-form .form-group input:focus + .label-name .content-name,
-.form-container .register-form .form-group input:valid + .label-name .content-name {
+.form-group input.form-control:focus + .label-name .content-name,
+.form-group input.form-control:valid + .label-name .content-name {
   transform: translatey(-150%);
   font-size: 14px;
   color: #969bc9;
 }
 
-.form-container .register-form .form-group input:focus + .label-name::after,
-.form-container .register-form .form-group input:valid + .label-name::after {
+.form-group input.form-control:focus + .label-name::after,
+.form-group input.form-control:valid + .label-name::after {
   transform: translateX(0%);
-}
-
-.icon {
-  position: absolute;
-  right: 4px;
-  bottom: 6px;
 }

@@ -384,19 +384,38 @@ body {
   font-weight: bold;
 }
 
-.black-button {
-  width: 130px;
+@keyframes modal {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.btn {
+  border: none;
+  outline: none;
   border-radius: 10px;
   padding: 6px 10px;
-  background-color: #443f3f;
-  color: white;
-  border: none;
+  font-size: 1rem;
+  font-family: sans-serif;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
 }
-.black-button span:hover {
+
+.btn-black {
+  width: 130px;
+  background-color: black;
+  color: white;
+}
+.btn-black span:hover {
   transition: all 0.3s ease-in-out;
   color: #21cc46;
 }
-.black-button img {
+.btn-black img {
   margin-right: 5px;
   margin-bottom: 2px;
 }
@@ -409,7 +428,8 @@ body {
   height: 500px;
 }
 .form-container .form {
-  border: 5px solid #969bc9;
+  margin-top: 75px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   padding: 10px 20px;
   position: relative;
@@ -448,20 +468,61 @@ body {
   grid-template-rows: 70px 70px 70px 70px;
   width: 650px;
   height: auto;
-  column-gap: 20px;
+  column-gap: 30px;
   padding: 10px 20px;
 }
 .form-container .register-form__image {
   grid-column: 1/2;
   grid-row: 1/5;
 }
-.form-container .register-form .form-group {
+
+.icon {
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
+}
+
+.modal {
+  position: absolute;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  left: 40%;
+  top: 3%;
+  animation: modal 2s 1;
+  transition: all 0.5 ease;
+  padding: 20px 30px;
+}
+.modal li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.modal button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+@keyframes modal {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.form-group {
   width: 100%;
   position: relative;
   height: 60px;
   overflow: hidden;
 }
-.form-container .register-form .form-group input {
+.form-group input.form-control {
   width: 80%;
   height: 100%;
   color: #595f6e;
@@ -470,11 +531,11 @@ body {
   outline: none;
   padding: 20px 0 5px 2px;
 }
-.form-container .register-form .form-group input:-webkit-autofill, .form-container .register-form .form-group input:-webkit-autofill:hover, .form-container .register-form .form-group input:-webkit-autofill:focus, .form-container .register-form .form-group input:-webkit-autofill:active {
+.form-group input.form-control:-webkit-autofill, .form-group input.form-control:-webkit-autofill:hover, .form-group input.form-control:-webkit-autofill:focus, .form-group input.form-control:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   box-shadow: 0 0 0 30px white inset !important;
 }
-.form-container .register-form .form-group label {
+.form-group label.label-name {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -483,7 +544,7 @@ body {
   pointer-events: none;
   border-bottom: 1px solid black;
 }
-.form-container .register-form .form-group label::after {
+.form-group label.label-name::after {
   content: "";
   position: absolute;
   left: 0;
@@ -494,25 +555,26 @@ body {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
-.form-container .register-form .form-group label .content-name {
+.form-group label.label-name .content-name {
   position: absolute;
   bottom: 5px;
   left: 0;
   transition: all 0.3s ease;
 }
-.form-container .register-form .form-group input:focus + .label-name .content-name, .form-container .register-form .form-group input:valid + .label-name .content-name {
+.form-group input.form-control:focus + .label-name .content-name, .form-group input.form-control:valid + .label-name .content-name {
   transform: translatey(-150%);
   font-size: 14px;
   color: #969bc9;
 }
-.form-container .register-form .form-group input:focus + .label-name::after, .form-container .register-form .form-group input:valid + .label-name::after {
+.form-group input.form-control:focus + .label-name::after, .form-group input.form-control:valid + .label-name::after {
   transform: translateX(0%);
 }
 
-.icon {
-  position: absolute;
-  right: 4px;
-  bottom: 6px;
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
 }
 
 .menu {
@@ -625,6 +687,69 @@ body {
 }
 .footer span {
   color: #21b943;
+}
+
+.login-box {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-box__form {
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-box__form input[type=submit] {
+  padding: 6px 10px;
+  margin: 0;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.login-box__form input[type=submit]:hover,
+.login-box__form input[type=submit]:focus {
+  background: #0053ba;
+}
+.login-box__form input[type=submit]:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+.login-box__form input[type=submit]:active {
+  transform: scale(0.99);
+}
+.login-box__form p {
+  text-align: center;
+  margin-top: 10px;
+}
+.login-box__form form {
+  display: grid;
+  grid-template-columns: 200px;
+  grid-template-rows: repeat(3, 90px) 70px 80px;
+}
+.login-box__form form div:nth-child(1) {
+  grid-row: 2/3;
+}
+.login-box__form form div:nth-child(2) {
+  grid-row: 3/4;
+}
+.login-box__form form input:nth-child(3) {
+  grid-row: 4/5;
+}
+.login-box__form form p:nth-child(4) {
+  grid-row: 5/5;
+}
+
+.icon {
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
 }
 
 /*# sourceMappingURL=style.css.map */

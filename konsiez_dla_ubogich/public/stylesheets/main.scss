@@ -1,17 +1,19 @@
-@import 'abstracts/variables';
+@import "abstracts/variable";
 
-@import 'base/base';
-@import 'base/fonts';
-@import 'base/reset';
-@import 'base/typography';
 
-@import 'components/black-button';
-@import 'components/form';
+@import "base/base";
+@import "base/fonts";
+@import "base/reset";
+@import "base/typography";
+@import "base/animations";
 
-@import 'layout/home/media';
-@import 'layout/home/navigation';
-@import 'layout/home/main-section';
-@import 'layout/home/footer';
+@import "components/buttons";
+@import "components/form";
+@import "components/links";
 
-@import 'pages/home';
-
+@import "layout/home/media";
+@import "layout/home/navigation";
+@import "layout/home/main-section";
+@import "layout/home/footer";
+@import "layout/authorization/login";
+@import "pages/home";

@@ -1,4 +1,21 @@
 extends layout
 
 block content
-    a(href="/users/register") redirect
+    .login-box
+        img(src="/images/login.jpg")
+        .login-box__form
+            form(method="POST")
+                .form-group
+                    i(class="fas fa-envelope icon")
+                    input.form-control(type="text" name="login" autocomplete="off" required)
+                    label(for="email", class="label-name")
+                        span(class="content-name") Email
+                .form-group    
+                    i(class="fas fa-key icon")
+                    input.form-control(type="password" name="password" autocomplete="off" required)
+                    label(for="password", class="label-name")
+                        span(class="content-name") Password
+                input(type="submit" value="ZALOGUJ", class="btn")
+                p Zapomniałeś 
+                    a(href="/retrive") hasła?
+            a(href="/users/register" class="login-box__link") Stwórz nowe konto ➜

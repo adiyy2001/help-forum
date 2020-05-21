@@ -1,0 +1,27 @@
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  font-family: sans-serif;
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-black {
+  width: 130px;
+  background-color: black;
+  color: white;
+}
+
+.btn-black span:hover {
+  transition: all 0.3s ease-in-out;
+  color: #21cc46;
+}
+
+.btn-black img {
+  margin-right: 5px;
+  margin-bottom: 2px;
+}

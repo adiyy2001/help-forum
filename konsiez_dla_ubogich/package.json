@@ -18,8 +18,14 @@
     "hbs": "^4.1.1",
     "mongoose": "^5.9.14",
     "nodemon": "^2.0.4",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "validator": "^13.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^4.14.1"
+  },
   "description": ""
 }
