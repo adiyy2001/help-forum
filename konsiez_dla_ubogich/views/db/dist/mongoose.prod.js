@@ -1,1 +1,0 @@
-"use strict";var mongoose=require("mongoose");mongoose.connect("mongodb://127.0.0.1:27017/forum-api",{useNewUrlParser:!0,useCreateIndex:!0,useUnifiedTopology:!0,useFindAndModify:!1});
