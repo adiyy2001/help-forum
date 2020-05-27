@@ -3,30 +3,37 @@ html(lang="pl-Pl")
   head
     link(rel="stylesheet", href="/stylesheets/css/main.css")
     script(src="https://kit.fontawesome.com/871720370b.js", crossorigin="anonymous")
+    
   body
     
-header.header
-  nav
-    ul.menu
-      li.menu-item
-        div.brand-logo
-        img(src="/images/logo.png" width="75" height="75")
-      li.menu-item
-        a(href="/") Główna strona
-      li(class="menu-item")
-          a(href="/users/login")
-            button.btn.btn-black
-                img(src="/images/user-icon-white.png", alt="ikona użytkownika", width="12px", height="12px")
-                span zaloguj się
-      li.menu-item
-        a(href="#")
-          img(src="/images/search-icon.jpg", alt="search icon", width="19px", height="19px")
-      li.menu-item
-        a(href="#") 
-          div.burger
-            span
-            span
-            span
+    header.header
+      nav
+        ul.menu
+          li.menu-item
+            div.brand-logo
+            img(src="/images/logo.png" width="75" height="75") 
+          li.menu-item
+            a(href="/") Główna strona
+          - var log = logged ? true : false;
+          if !log
+            li(class="menu-item")
+                a(href="/users/login")
+                  button.btn.btn-black
+                      img(src="/images/user-icon-white.png", alt="ikona użytkownika", width="12px", height="12px")
+                      span zaloguj się
+          li.menu-item
+            a(href="#")
+              img(src="/images/search-icon.jpg", alt="search icon", width="19px", height="19px")
+          li.menu-item
+            a(href="#") 
+              div.burger
+                span
+                span
+                span
+        != messages('messages', locals)
+        if errors
+          each error, i in errors
+            div(class="alert alert-danger") #{error.msg}
     block content
 
     footer.footer

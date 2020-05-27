@@ -1,67 +1,62 @@
 extends layout
 
 block content
-  - var err = errors ? true : false
-    if err
-      ul.modal
-        each error in errors
-          li= error
-        button(id="button") x
-    div.form-container
-      form(method='POST', action='/users/register', class="form", autocomplete="off")
-        h1.register-header ZAREJESTRUJ SIĘ
-        .register-form
-          img(src="/images/signup.jpg" width="200px" height="280px" class="register-form__image")
-          .form-group
-            i(class="fas fa-user icon")
-            input.form-control(type="text" name="name" autocomplete="off" required)
-            label(for="name", class="label-name")
-              span(class="content-name") name
-          .form-group
-            i(class="fas fa-user icon")
-            input.form-control(type="text" name="surname" autocomplete="off" required)
-            label(for="surname", class="label-name")
-              span(class="content-name") surname
-          .form-group(style="margin-bottom: 20px")
-            i(class="fab fa-odnoklassniki-square icon")
-            input.form-control(type="text" name="nick" autocomplete="off" required)
-            label(for="nick", class="label-name")
-              span(class="content-name") nick
-          .form-group
-            i(class="fas fa-envelope icon")
-            input.form-control(type="text" name="email" autocomplete="off" required)
-            label(for="email", class="label-name")
-              span(class="content-name") Email
-          .form-group
-            i(class="fas fa-map-signs icon")
-            input.form-control(type="text" name="voivodeship" autocomplete="off" required)
-            label(for="voivodeship", class="label-name")
-              span(class="content-name") Województwo
-          .form-group
-            i(class="fas fa-city icon")
-            input.form-control(type="text" name="city" autocomplete="off" required)
-            label(for="city", class="label-name")
-              span(class="content-name") Miasto
-          .form-group
-            i(class="fas fa-key icon")
-            input.form-control(type="password" name="password" autocomplete="off" required)
-            label(for="password", class="label-name")
-              span(class="content-name") Hasło
-          .form-group
-            i(class="fas fa-key icon")
-            input.form-control(type="password" name="password2" autocomplete="off" required)
-            label(for="password2", class="label-name")
-              span(class="content-name") Potwierdź
-        //- input(id='agreement', type='checkbox')
-        //- |    Zgadzam sie z regulaminem użytkowania
-        input(class="btn btn-primary", type='submit', value='Gotowe')
-      script.
-        const button = document.querySelector('#button');
+  div.form-container
+    form(method='POST', action='/users/register', class="form", autocomplete="off")
+      h1.register-header ZAREJESTRUJ SIĘ
+      .register-form
+        img(src="/images/signup.jpg" width="200px" height="280px" class="register-form__image")
+        .form-group
+          i(class="fas fa-user icon")
+          input.form-control(type="text" name="name" autocomplete="off" required)
+          label(for="name", class="label-name")
+            span(class="content-name") name
+        .form-group
+          i(class="fas fa-user icon")
+          input.form-control(type="text" name="surname" autocomplete="off" required)
+          label(for="surname", class="label-name")
+            span(class="content-name") surname
+        .form-group(style="margin-bottom: 20px")
+          i(class="fab fa-odnoklassniki-square icon")
+          input.form-control(type="text" name="nick" autocomplete="off" required)
+          label(for="nick", class="label-name")
+            span(class="content-name") nick
+        .form-group
+          i(class="fas fa-envelope icon")
+          input.form-control(type="text" name="email" autocomplete="off" required)
+          label(for="email", class="label-name")
+            span(class="content-name") Email
+        .form-group
+          i(class="fas fa-map-signs icon")
+          input.form-control(type="text" name="voivodeship" autocomplete="off" required)
+          label(for="voivodeship", class="label-name")
+            span(class="content-name") Województwo
+        .form-group
+          i(class="fas fa-city icon")
+          input.form-control(type="text" name="city" autocomplete="off" required)
+          label(for="city", class="label-name")
+            span(class="content-name") Miasto
+        .form-group
+          i(class="fas fa-key icon")
+          input.form-control(type="password" name="password" autocomplete="off" required, id="pass1")
+          label(for="password", class="label-name")
+            span(class="content-name") Hasło
+        .form-group
+          i(class="fas fa-key icon")
+          input.form-control(type="password" name="password2" autocomplete="off" required, id="pass2")
+          label(for="password2", class="label-name")
+            span(class="content-name") Potwierdź
+      //- input(id='agreement', type='checkbox')
+      //- |    Zgadzam sie z regulaminem użytkowania
+      input(class="btn btn-primary", type='submit', value='Gotowe')
+    script.
+      const button = document.querySelector('#button');
         if(button !== null) {
           button.addEventListener('click', (event) => {
           event.target.parentElement.remove();
+
+            setTimeout(() => {
+          button.parentElement.remove();
+        },4000);
         })
         }
-        setTimeout(() => {
-          button.parentElement.remove();
-        },4000)    
