@@ -13,23 +13,31 @@ html(lang="pl-Pl")
             div.brand-logo
             img(src="/images/logo.png" width="75" height="75") 
           li.menu-item
-            a(href="/") Główna strona
-          - var log = logged ? true : false;
-          if !log
+            a(href="/forum") Forum
+          if !_id
             li(class="menu-item")
                 a(href="/users/login")
                   button.btn.btn-black
-                      img(src="/images/user-icon-white.png", alt="ikona użytkownika", width="12px", height="12px")
+                      i(class="fas fa-user")
                       span zaloguj się
+          else
+            li(class="menu-item")
+              a(href="/users/userInterface")
+                button.btn.btn-black
+                      i(class="fas fa-user")
+                      span profile
           li.menu-item
-            a(href="#")
+            a(href="/")
               img(src="/images/search-icon.jpg", alt="search icon", width="19px", height="19px")
           li.menu-item
-            a(href="#") 
-              div.burger
-                span
-                span
-                span
+            button(class="btn") 
+                div.burger
+                  span
+                  span
+                  span
+            ul(class="menu-item__submenu")
+              li 
+                a(href="/users/logout") Wyloguj
         != messages('messages', locals)
         if errors
           each error, i in errors

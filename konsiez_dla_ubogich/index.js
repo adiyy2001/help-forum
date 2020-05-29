@@ -58,4 +58,8 @@ app.get('/', (req, res) => {
   res.render('index');
 })
 
+app.get('/forum', (req, res) => {
+  res.render('forum');
+})
+
 app.listen(port, () => console.log(`Server is up on port: ${port}`)); 

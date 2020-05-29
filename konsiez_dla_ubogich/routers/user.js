@@ -12,8 +12,14 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/userInterface', (req, res) => {
-    res.render('userInterface');
+    const user = req.user;
+    res.render('userInterface', user);
 });
+
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
 
 router.post('/register', async (req, res) => {
     const name = req.body.name;
@@ -60,39 +66,17 @@ router.post('/register', async (req, res) => {
         })
     }
 
-    // let user = new User(req.body);
-
-    // try {
-    //     await user.save();
-    //     await user.generateAuthToken();
-    //     res.status(201).redirect('/users/login');
-    // } catch (err) {
-    //     const errors = err.message.substring(23, err.message.length)
-    //           .split(",")
-    //           .map(x => x.substring(x.indexOf(':') + 1, x.length));
-    //     res.render('register', { errors });
-    // }
 
 
 });
 
 router.post('/login', async (req, res, next) => {
-    // try {
-    //     const user = await User.findByCredentials(req.body.login, req.body.password);
-    //     await user.generateAuthToken();
-
-    //     res.status(200).render('userInterface', { user, logged: true });
-    // } catch (e) {
-    //     console.log(e)
-    //     res.status(501).send();
-    // }
-
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/users/userInterface',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
-})
+});
 
 
 module.exports = router;

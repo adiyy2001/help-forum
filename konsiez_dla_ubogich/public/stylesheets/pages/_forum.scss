@@ -1,0 +1,33 @@
+.forum-container {
+    width: 1200px;
+    background-color: red;
+    height: 60vh;
+    margin: 0 auto;
+    margin-top: 4%;
+    &__header {
+        padding: 20px 15px 0 15px;
+        display: flex;
+        h1 {
+            font-size: 40px;
+        }
+        button {
+            margin-left: auto;
+            width: 150px;
+            font-weight: 300;
+        }
+    }
+    .topics {
+        padding: 20px 15px 0 15px;
+        display: grid;
+        grid-template-columns: 1fr repeat(4, 200px);
+        grid-template-rows: repeat(2, 70px);
+        grid-auto-rows: 70px;
+        &__tab {
+            justify-self: end;
+            padding-right: 24px;
+            font-size: 20px;
+            font-family: "Lato", sans-serif;
+            font-weight: 300;
+        }
+    }
+}

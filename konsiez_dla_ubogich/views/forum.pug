@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .forum-container
+        .forum-container__header 
+            h1 Forum
+            button(class="btn btn-black")
+                i(class="fas fa-plus")
+                | Nowy Temat
+        .forum-container__posts
+            .topics
+                p Tematy
+                p(class="topics__tab") Kategorie
+                p(class="topics__tab") Użytkownicy
+                p(class="topics__tab") Odpowiedźi
+                p(class="topics__tab") Aktywność
+            

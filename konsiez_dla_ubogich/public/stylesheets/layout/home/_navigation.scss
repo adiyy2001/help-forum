@@ -29,6 +29,26 @@
     }
 }
 
+.menu-item {
+    position: relative;
+    > button {
+       background-color: #fff; 
+    }
+    button:focus + &__submenu,
+    &__submenu:hover {
+        display: block;
+    }  
+    &__submenu {
+        display: none;
+        position: absolute;
+        margin: 70px 0 0 0;
+        padding: 10px;
+        li {
+            list-style: none;
+        }
+    }
+}
+
 .burger {
     display: flex;
     flex-direction: column;

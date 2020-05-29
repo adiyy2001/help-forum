@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 body {
-  min-height: 300px;
+  min-height: 850px;
   overflow-y: auto; }
 
 html, body, div, span, applet, object, iframe,
@@ -350,7 +350,6 @@ body {
 .btn {
   border: none;
   outline: none;
-  border-radius: 10px;
   padding: 6px 10px;
   font-size: 1rem;
   font-family: sans-serif;
@@ -360,14 +359,21 @@ body {
 
 .btn-black {
   width: 130px;
-  background-color: black;
+  background-color: #2B3339;
   color: white; }
   .btn-black span:hover {
     transition: all 0.3s ease-in-out;
     color: #21cc46; }
-  .btn-black img {
+  .btn-black i {
     margin-right: 5px;
     margin-bottom: 2px; }
+
+.btn-interface {
+  width: 214px;
+  padding: 20px 30px;
+  color: white;
+  font-size: 12px;
+  margin-bottom: 19px; }
 
 .form-container {
   display: flex;
@@ -553,6 +559,20 @@ a {
   .menu-item:not(:first-child) {
     margin-left: 14px; }
 
+.menu-item {
+  position: relative; }
+  .menu-item > button {
+    background-color: #fff; }
+  button:focus + .menu-item__submenu, .menu-item__submenu:hover {
+    display: block; }
+  .menu-item__submenu {
+    display: none;
+    position: absolute;
+    margin: 70px 0 0 0;
+    padding: 10px; }
+    .menu-item__submenu li {
+      list-style: none; }
+
 .burger {
   display: flex;
   flex-direction: column;
@@ -607,7 +627,7 @@ a {
         right: 0; }
 
 .footer {
-  background-color: #3f3939;
+  background-color: #3F3939;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -671,3 +691,157 @@ a {
   position: absolute;
   right: 4px;
   bottom: 6px; }
+
+.user-container {
+  display: flex;
+  width: 1440px;
+  height: 750px;
+  background-color: white;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 300px 1fr; }
+  .user-container .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .user-container .profile figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      flex-direction: column; }
+    .user-container .profile__image {
+      width: 150px;
+      height: 150px;
+      background-color: #c4c4c4;
+      border-radius: 50%;
+      margin-bottom: 20px; }
+    .user-container .profile__title {
+      text-align: center; }
+  .user-container .data {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .user-container .data__values {
+      margin-left: 50px; }
+    .user-container .data__messages-box {
+      width: 276px;
+      height: 144px;
+      background-color: #f5f2f2;
+      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.75);
+      margin-left: auto;
+      margin-right: 120px; }
+      .user-container .data__messages-box .dots {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 100%;
+        height: 30px; }
+        .user-container .data__messages-box .dots span:nth-child(1) {
+          margin-left: 20px; }
+        .user-container .data__messages-box .dots .dot {
+          font-size: 30px;
+          font-weight: bold;
+          margin-left: 7px;
+          cursor: default; }
+  .user-container .settings {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px; }
+  .user-container .posts {
+    width: 920px;
+    height: 322px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.75);
+    background-color: #fff;
+    padding: 20px 30px;
+    color: #7a7171;
+    margin-left: 30px; }
+    .user-container .posts-box__header {
+      font-size: 24px;
+      margin-bottom: 20px; }
+    .user-container .posts-box__states {
+      margin-left: 15px; }
+      .user-container .posts-box__states a {
+        margin: 0 21px 5px 0;
+        color: #7a7171;
+        font-weight: 400;
+        font-size: 22px; }
+    .user-container .posts-box__posts {
+      margin: 20px 30px; }
+      .user-container .posts-box__posts .post {
+        width: 832px;
+        height: 126px;
+        background-color: #e6e7f2;
+        padding: 10px 20px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .user-container .posts-box__posts .post-content {
+          display: flex;
+          justify-content: space-around;
+          align-items: left;
+          flex-direction: column;
+          height: 100%;
+          margin-right: auto;
+          margin-left: 20px; }
+          .user-container .posts-box__posts .post-content__title {
+            font-weight: bold;
+            color: black;
+            margin-top: 15px; }
+          .user-container .posts-box__posts .post-content__text {
+            color: black;
+            width: 550px;
+            font-size: 16px; }
+          .user-container .posts-box__posts .post-content__hastags {
+            display: flex;
+            justify-content: left; }
+            .user-container .posts-box__posts .post-content__hastags p {
+              margin-right: 10px;
+              color: #bcacac; }
+        .user-container .posts-box__posts .post__side-data {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          height: 100%;
+          flex-direction: column; }
+          .user-container .posts-box__posts .post__side-data__date {
+            font-size: 14px; }
+          .user-container .posts-box__posts .post__side-data__price {
+            font-size: 20px; }
+          .user-container .posts-box__posts .post__side-data__status span {
+            font-size: 20px;
+            color: #2ade31; }
+
+.forum-container {
+  width: 1200px;
+  background-color: red;
+  height: 60vh;
+  margin: 0 auto;
+  margin-top: 4%; }
+  .forum-container__header {
+    padding: 20px 15px 0 15px;
+    display: flex; }
+    .forum-container__header h1 {
+      font-size: 40px; }
+    .forum-container__header button {
+      margin-left: auto;
+      width: 150px;
+      font-weight: 300; }
+  .forum-container .topics {
+    padding: 20px 15px 0 15px;
+    display: grid;
+    grid-template-columns: 1fr repeat(4, 200px);
+    grid-template-rows: repeat(2, 70px);
+    grid-auto-rows: 70px; }
+    .forum-container .topics__tab {
+      justify-self: end;
+      padding-right: 24px;
+      font-size: 20px;
+      font-family: "Lato", sans-serif;
+      font-weight: 300; }

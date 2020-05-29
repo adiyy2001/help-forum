@@ -30,17 +30,11 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
-        // validate(value) {
-        //     if (!validator.isEmail(value)) throw new Error('niepoprawny adres email')
-        // }
     },
     password: {
         type: String,
         required: true,
         trim: true,
-        // validate(value) {
-        //     if (value.length < 6) throw new Error('Hasło musi mieć conajmniej 6 znaków')
-        // }
     },
     voivodeship: {
         type: String,

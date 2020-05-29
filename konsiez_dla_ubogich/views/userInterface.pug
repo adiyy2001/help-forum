@@ -1,4 +1,54 @@
 extends layout
 
 block content
-    pre= user
+  - const user = `${name} ${surname}`;
+  .user-container
+    .profile
+      figure
+        img(class="profile__image", )
+        i(class="fas fa-plus" style="position: absolute; left: 50%; top:29%; transform: translate(-50%); font-size: 40px")
+        figcaption(class="profile__title") #{user}
+    .data
+      .data__values
+        h1 Dane
+        p kontakt: 
+          button(class="btn") Dodaj nr kontaktowy
+        p adres email:
+        span= email
+      .data__messages-box
+        .dots
+          span(class="dot", style="color: #F96056") •
+          span(class="dot", style="color: #FBBF2D") •
+          span(class="dot", style="color: #29CD41") •
+    .settings
+      button(class="btn btn-interface" style="background-color: #2B3339; display: flex; justify-content: space-between; align-items: center") 
+        p(class="fas fa-plus")
+          p Dodaj post
+      button(class="btn btn-interface" style="background-color: #B8D0E7") Obserwowani użytkownicy
+      button(class="btn btn-interface" style="background-color: #BCACAC; display: flex; justify-content: space-between; align-items: center" ) 
+        p(class="fas fa-cog")
+          p Ustawienia
+    .posts
+      .posts-box
+        p.posts-box__header Posty
+        .posts-box__states
+          a(href="#") Aktywne
+          a(href="#") Wszystkie
+          a(href="#") Archiwum
+        hr
+        .posts-box__posts
+          .post
+            .post-content
+              h1.post-content__title Potrzebuje pomocy
+              p.post-content__text.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis nisi eu eros tempor, ut consequat lacus pretium. Proin in est diam. Proin enim sapien, imperdiet sed lorem id, posuere consequat nulla.
+              .post-content__hastags
+                p #Psy
+                p #Pomoc
+                p #Olsztyn
+                p #Praca
+            .post__side-data
+              p.post__side-data__date 2020-05-13 10:17
+              p.post__side-data__price 15 zł
+              p.post__side-data__status Status 
+                span •
