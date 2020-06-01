@@ -1,17 +1,43 @@
 extends layout
 
 block content
-    .forum-container
-        .forum-container__header 
-            h1 Forum
-            button(class="btn btn-black")
-                i(class="fas fa-plus")
-                | Nowy Temat
-        .forum-container__posts
-            .topics
-                p Tematy
-                p(class="topics__tab") Kategorie
-                p(class="topics__tab") Użytkownicy
-                p(class="topics__tab") Odpowiedźi
-                p(class="topics__tab") Aktywność
-            
+  .forum-container
+    .forum-container__header 
+      h1 Forum
+      button(class="btn btn-black" id="addPost")
+        i(class="fas fa-plus")
+        | Nowy Temat
+    .forum-container__posts
+      .topics
+        p Tematy
+        p(class="topics__tab") Kategorie
+        p(class="topics__tab") Użytkownicy
+        p(class="topics__tab") Odpowiedzi
+        p(class="topics__tab") Aktywność
+      .post
+        p(class="question") 
+          a(href="/posts/:id") Pomoc wyprowadzaniu psa
+        p(class="post__category")
+          span(class="box")  
+          span(class="category") inne
+        p 4
+        p 12
+        p 3d
+  #modal.add-post
+    .add-post-content
+      form(method="POST", action="/posts/add")
+        .form-group
+          i(class="fab fa-tumblr icon")
+          input.form-control(type="text" name="title" autocomplete="off" required)
+          label(for="title", class="label-name")
+            span(class="content-name") Tytuł
+        .form-group    
+          i(class="fas fa-sticky-note icon")
+          input.form-control(type="password" name="message" autocomplete="off" required)
+          label(for="password", class="label-name")
+            span(class="content-name") Wiadomość...
+        input(type="submit" value="Dodaj", class="btn btn-black", style="margin-top: 30px;")
+  script(src="/javascript/modal.js")
+
+
+

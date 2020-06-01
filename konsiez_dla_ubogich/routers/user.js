@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const User = require('../models/user');
+const Post = require('../models/post');
 const passport = require('passport');
 
 router.get('/register', (req, res) => {
@@ -11,15 +12,22 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/userInterface', (req, res) => {
-    const user = req.user;
-    res.render('userInterface', user);
+router.get('/me', async (req, res) => {
+    const _id = req.session.passport['user'];
+    console.log(req.session)
+    const posts = await Post.find({ author: _id });
+    try {
+        const user = await User.findOne({ _id });
+        res.render('userInterface', user).send();
+    } catch (err) {
+        res.status(401).send({ err })
+    }
 });
 
-router.get('/logout', function(req, res){
+router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
-  });
+});
 
 router.post('/register', async (req, res) => {
     const name = req.body.name;
@@ -72,7 +80,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/users/userInterface',
+        successRedirect: '/users/me',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);

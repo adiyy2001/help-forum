@@ -1,6 +1,6 @@
 .forum-container {
     width: 1200px;
-    background-color: red;
+    // background-color: red;
     height: 60vh;
     margin: 0 auto;
     margin-top: 4%;
@@ -16,18 +16,64 @@
             font-weight: 300;
         }
     }
-    .topics {
-        padding: 20px 15px 0 15px;
-        display: grid;
-        grid-template-columns: 1fr repeat(4, 200px);
-        grid-template-rows: repeat(2, 70px);
-        grid-auto-rows: 70px;
-        &__tab {
-            justify-self: end;
-            padding-right: 24px;
-            font-size: 20px;
-            font-family: "Lato", sans-serif;
+    &__posts {
+        .topics {
+            padding: 20px 15px 0 15px;
+            display: grid;
+            grid-template-columns: 1fr repeat(4, 200px);
+            grid-template-rows: 40px;
+            &__tab,
+            p {
+                padding-right: 24px;
+                font-size: 20px;
+                font-family: "Lato", sans-serif;
+                font-weight: 300;
+            }
+            p {
+                margin-left: 10px;
+            }
+            &__tab {
+                justify-self: end;
+            }
+        }
+
+        .post {
+            padding: 20px 15px 0 15px;
+            display: grid;
+            grid-template-columns: 1fr repeat(4, 200px);
+            grid-template-rows: 70px;
+            grid-auto-rows: 70px;
             font-weight: 300;
+            position: relative;
+            &::after {
+                content: ""; 
+                display: block; 
+                width: 310%; 
+                height: 1px;
+                border-bottom: 2px solid #999191;
+                margin-left: 10px;
+            }
+            p:not(.question) {
+                justify-self: end;
+                padding-right: 24px;
+            }
+            .question {
+                justify-self: start;
+                padding-left: 10px;
+            }
+            &__category {
+                display: flex;
+                justify-content: center;
+                .box {
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #E3F6F0;
+                }
+                .category {
+                    padding: 0 0 0 10px;
+                }
+            }
         }
     }
 }

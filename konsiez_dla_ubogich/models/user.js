@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -8,17 +7,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        // validate(value) {
-        //     if (value.length < 3) throw new Error('Imie jest za krótkie')
-        // }
     },
     surname: {
         type: String,
         required: true,
         trim: true,
-        // validate(value) {
-        //     if (value.length < 3) throw new Error('Nazwisko jest za krótkie')
-        // }
     },
     nick: {
         type: String,
@@ -64,18 +57,6 @@ userSchema.pre('save', async function (next) {
     }
     next();
 })
-
-
-userSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({ email })
-
-    if (!user) throw new Error('Unable to login')
-
-    const isMatch = await bcrypt.compare(password, user.password)
-
-    if (!isMatch) throw new Error('Unable to login')
-    return user
-}
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this;
