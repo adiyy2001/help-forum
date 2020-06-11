@@ -1,7 +1,6 @@
 .forum-container {
     width: 1200px;
-    // background-color: red;
-    height: 60vh;
+    min-height: calc(100vh - 100px);
     margin: 0 auto;
     margin-top: 4%;
     &__header {
@@ -38,10 +37,10 @@
         }
 
         .post {
-            padding: 20px 15px 0 15px;
+            padding: 20px 15px 7px 20px;
             display: grid;
             grid-template-columns: 1fr repeat(4, 200px);
-            grid-template-rows: 70px;
+            grid-template-rows: 30px;
             grid-auto-rows: 70px;
             font-weight: 300;
             position: relative;

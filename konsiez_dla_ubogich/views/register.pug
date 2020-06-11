@@ -27,15 +27,11 @@ block content
           label(for="email", class="label-name")
             span(class="content-name") Email
         .form-group
-          i(class="fas fa-map-signs icon")
-          input.form-control(type="text" name="voivodeship" autocomplete="off" required)
-          label(for="voivodeship", class="label-name")
-            span(class="content-name") Województwo
+          select(class="voivodeships" style="width: 100%;")
+            option(selected="selected") Województwo
         .form-group
-          i(class="fas fa-city icon")
-          input.form-control(type="text" name="city" autocomplete="off" required)
-          label(for="city", class="label-name")
-            span(class="content-name") Miasto
+          select(class="cities" style="width: 100%;")
+            option(selected="selected") Miasto
         .form-group
           i(class="fas fa-key icon")
           input.form-control(type="password" name="password" autocomplete="off" required, id="pass1")
@@ -60,3 +56,4 @@ block content
         },4000);
         })
         }
+  script(src="/javascript/api.js" type="text/javascript")

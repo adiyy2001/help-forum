@@ -3,6 +3,7 @@ const router = new express.Router();
 const User = require('../models/user');
 const Post = require('../models/post');
 const passport = require('passport');
+const multer = require('multer');
 
 router.get('/register', (req, res) => {
     res.render('register');
@@ -13,15 +14,54 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/me', async (req, res) => {
+    if (!req.isAuthenticated()) {
+        req.flash('danger', 'Musisz się zalogować');
+        res.redirect('/users/login');
+    }
     const _id = req.session.passport['user'];
-    console.log(req.session)
-    const posts = await Post.find({ author: _id });
     try {
         const user = await User.findOne({ _id });
-        res.render('userInterface', user).send();
+        const posts = await Post.find({ authorID: user._id.toString() });
+        res.render('userInterface', { 
+            _id,
+            userData: user, 
+            posts 
+        });
     } catch (err) {
         res.status(401).send({ err })
     }
+});
+
+router.post('/me/avatar', (req, res ) => {
+
+})
+
+const upload = multer({
+    dest: 'images'
+})
+
+router.get('/me/active', async (req, res) => {
+    const _id = req.session.passport['user'];
+    try {
+        const posts = await Post.find({ status: false, authorID: _id.toString() });
+        res.render('userInterface', { 
+            _id,
+            userData: req.user, 
+            posts 
+        }).send();
+    } catch {}
+});
+
+router.get('/me/done', async (req, res) => {
+    const _id = req.session.passport['user'];
+    try {
+        const posts = await Post.find({ status: true, authorID: _id.toString() });
+        res.render('userInterface', { 
+            _id,
+            userData: req.user, 
+            posts 
+        }).send();
+    } catch {}
 });
 
 router.get('/logout', (req, res) => {
@@ -86,5 +126,13 @@ router.post('/login', async (req, res, next) => {
     })(req, res, next);
 });
 
+router.post('/me/add-contact', async (req, res) => {
+    user = req.user;
+    user.contact = req.body.contact;
+    try {
+        await user.save();
+        res.redirect('/users/me')
+    } catch(err) { console.log(err) }
+})
 
 module.exports = router;

@@ -1,20 +1,26 @@
 extends layout
 
 block content
-  - const user = `${name} ${surname}`;
+  - const person = `${userData.name} ${userData.surname}`;
   .user-container
     .profile
       figure
-        img(class="profile__image", )
-        i(class="fas fa-plus" style="position: absolute; left: 50%; top:29%; transform: translate(-50%); font-size: 40px")
-        figcaption(class="profile__title") #{user}
+        img(class="profile__image")
+        a
+          input(type="file", id="file", class="fa fa-user", style=" display: none;")
+          label(for="file", class="fa fa-user" style=" position: absolute; left: 50%; top:29%; transform: translate(-50%); font-size: 40px; cursor: pointer")
+        figcaption(class="profile__title") #{person}
     .data
       .data__values
         h1 Dane
         p kontakt: 
-          button(class="btn") Dodaj nr kontaktowy
-        p adres email:
-        span= email
+          if userData.contact
+            a(href=`tel:${userData.contact}`)= userData.contact
+          else
+            button(class="btn add-contact") 
+              span Dodaj nr kontaktowy
+        p adres email: 
+          span= userData.email
       .data__messages-box
         .dots
           span(class="dot", style="color: #F96056") •
@@ -23,7 +29,7 @@ block content
     .settings
       button(class="btn btn-interface" style="background-color: #2B3339; display: flex; justify-content: space-between; align-items: center") 
         p(class="fas fa-plus")
-          p Dodaj post
+          p( id="addPost") Dodaj post
       button(class="btn btn-interface" style="background-color: #B8D0E7") Obserwowani użytkownicy
       button(class="btn btn-interface" style="background-color: #BCACAC; display: flex; justify-content: space-between; align-items: center" ) 
         p(class="fas fa-cog")
@@ -32,23 +38,41 @@ block content
       .posts-box
         p.posts-box__header Posty
         .posts-box__states
-          a(href="#") Aktywne
-          a(href="#") Wszystkie
-          a(href="#") Archiwum
+          a(href="/users/me/active") Aktywne
+          a(href="/users/me") Wszystkie
+          a(href="/users/me/done") Archiwum
         hr
         .posts-box__posts
-          .post
-            .post-content
-              h1.post-content__title Potrzebuje pomocy
-              p.post-content__text.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis nisi eu eros tempor, ut consequat lacus pretium. Proin in est diam. Proin enim sapien, imperdiet sed lorem id, posuere consequat nulla.
-              .post-content__hastags
-                p #Psy
-                p #Pomoc
-                p #Olsztyn
-                p #Praca
-            .post__side-data
-              p.post__side-data__date 2020-05-13 10:17
-              p.post__side-data__price 15 zł
-              p.post__side-data__status Status 
-                span •
+          each post in posts
+            .post
+              .post-content
+                h1.post-content__title= post.title
+                p.post-content__text= post.message
+                .post-content__hastags
+                  p #Psy
+                  p #Pomoc
+                  p #Olsztyn
+                  p #Praca
+              .post__side-data
+                p.post__side-data__date 2020-05-13 10:17
+                p.post__side-data__price 15 zł
+                p.post__side-data__status Status 
+                if post.status === true
+                  span(style="color: #F96056;") •
+                else 
+                  span(style="color: #2ade31;") •
+  #modal.add-post
+    .add-post-content
+      form(method="POST", action="/posts/add")
+        .form-group
+          i(class="fab fa-tumblr icon")
+          input.form-control(type="text" name="title" autocomplete="off" required)
+          label(for="title", class="label-name")
+            span(class="content-name") Tytuł
+        .form-group    
+          i(class="fas fa-sticky-note icon")
+          input.form-control(type="text" name="message" autocomplete="off" required)
+          label(for="message", class="label-name")
+            span(class="content-name") Wiadomość...
+        input(type="submit" value="Dodaj", class="btn btn-black", style="margin-top: 30px;")
+  script(src="/javascript/modal.js" type="text/javascript")

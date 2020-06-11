@@ -12,7 +12,22 @@ const postSchema = mongoose.Schema({
     author: {
         type: String,
         require: true,
-    }
+    },
+    status: {
+        type: Boolean,
+        default: false
+    }, comments: [{
+        comment: {
+            author: {
+                type: String
+            },
+            comment: {
+                type: String
+            }
+        }
+    }]
+}, {
+    timestamps: true
 });
 
 const Post = module.exports = mongoose.model('Post', postSchema);

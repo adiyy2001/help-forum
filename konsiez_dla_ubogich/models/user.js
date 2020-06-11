@@ -37,6 +37,14 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    contact: {
+        type: Number,
+        optional: true
+    },
+    avatar: {
+        type: Buffer,
+        optional: true
+    },
     tokens: [{
         token: {
             type: String,

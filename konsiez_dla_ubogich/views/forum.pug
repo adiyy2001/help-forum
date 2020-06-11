@@ -14,18 +14,19 @@ block content
         p(class="topics__tab") Użytkownicy
         p(class="topics__tab") Odpowiedzi
         p(class="topics__tab") Aktywność
-      .post
-        p(class="question") 
-          a(href="/posts/:id") Pomoc wyprowadzaniu psa
-        p(class="post__category")
-          span(class="box")  
-          span(class="category") inne
-        p 4
-        p 12
-        p 3d
+      each post in posts
+        .post
+          p(class="question") 
+            a(href='posts/'+post.id)= post.title
+          p(class="post__category")
+            span(class="box")  
+            span(class="category") inne
+          p 4
+          p= post.comments.length
+          p 3d
   #modal.add-post
     .add-post-content
-      form(method="POST", action="/posts/add")
+      form(method="POST", action="/posts/add", autocomplete="off")
         .form-group
           i(class="fab fa-tumblr icon")
           input.form-control(type="text" name="title" autocomplete="off" required)
@@ -33,7 +34,7 @@ block content
             span(class="content-name") Tytuł
         .form-group    
           i(class="fas fa-sticky-note icon")
-          input.form-control(type="password" name="message" autocomplete="off" required)
+          input.form-control(type="text" name="message" autocomplete="off" required)
           label(for="password", class="label-name")
             span(class="content-name") Wiadomość...
         input(type="submit" value="Dodaj", class="btn btn-black", style="margin-top: 30px;")

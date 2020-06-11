@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  .post-container 
+    .info
+      .user
+        img.profile-image
+        span.person= author
+      .post
+        h5.title Title
+          p.description 
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet, mi at accumsan elementum, nibh eros rhoncus turpis, in porta ante ante vel leo. Mauris rutrum massa eu urna placerat, quis aliquet lorem ullamcorper. 
+        .tags
+          p(class="tag push") #Lorem
+          p.tag #Lorem
+          p.tag #Lorem
+          p.tag #Lorem
+    .details
+      p.date 2020-05-13 10:17
+      p.price 15 zł
+      p.status status 
+        if status === true
+          span(style="color: #F96056; margin-left: 10px") •
+        else 
+          span(style="color: #2ade31; margin-left: 10px") •
+  .comments-container
+    .comments-container__header
+      p komentarze: 
+        span= comments.length
+      hr
+    .comments
+      each comment in comments
+        //- .comment
+          //- p.author= comment.comment.author
+          //- p.date 2020-05-13 10:17
+          //- p.description= comment.comment.comment
+        div(style="width: 100%")
+          .card.v-card.v-sheet.theme--light.elevation-2
+            .header
+              .v-avatar.avatar(style='height: 50px; width: 50px;')
+                img(src='https://images.unsplash.com/photo-1490894641324-cfac2f5cd077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=100&q=70')
+              span.displayName.title= comment.comment.author
+              span.displayName.caption 2020-05-13 10:17
+            // 
+            .wrapper.comment
+              p= comment.comment.comment
+            .actions
+              button.v-btn
+                i.fas.fa-heart
+              // 
+              // 
+            .v-dialog__container(style='display: block;')
+          // 
+          .answers
+            // 
+                          
+    .add-comment 
+      form(method="POST", action='/posts/'+id+'/add-comment')
+        input(type="text" name="message" autocomplete="off", placeholder="Dodaj komentarz..." required)
+        button.btn(value="dodaj" type="submit") Wyślij

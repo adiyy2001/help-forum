@@ -1,7 +1,7 @@
 .user-container {
     display: flex;
     width: 1440px;
-    height: 750px;
+    min-height: calc(100vh - 170px);
     background-color: rgb(255, 255, 255);
     margin: 0 auto;
     display: grid;
@@ -88,8 +88,10 @@
                 }
             }
             &__posts {
-                margin: 20px 30px;
+                height: 200px;
+                overflow-Y: scroll;
                 .post {
+                    margin: 20px 15px;
                     width: 832px;
                     height: 126px;
                     background-color: #e6e7f2;
@@ -138,7 +140,6 @@
                         &__status {
                             span {
                                 font-size: 20px;
-                                color: #2ade31;
                             }
                         }
                     }

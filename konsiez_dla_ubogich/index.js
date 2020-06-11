@@ -1,6 +1,7 @@
 require('./views/db/mongoose');
 const userRouter = require('./routers/user');
 const postRouter = require('./routers/post');
+const Post = require('./models/post');
 
 const cookieSession = require('cookie-session');
 const expressValidator = require('express-validator');
@@ -64,15 +65,18 @@ app.use('/users', userRouter)
 app.use('/posts', postRouter)
 
 app.get('/', (req, res) => {
-  const _id = req.session.passport['user'];
-  if(_id) res.render('index', { _id });
+  if(req.session.passport) res.render('index', { _id: req.session.passport['user'] });
+  else res.render('index');
 })
 
-app.get('/forum', (req, res) => {
+app.get('/forum', async (req, res) => {
   const _id = req.session.passport['user'];
-  if(_id) {
-    res.render('forum', {_id});
-  }
+  let posts = await Post.find({});
+  if(_id) res.render('forum', {
+    _id,
+    posts
+  });
+  else res.render('forum', posts)
 })
 
 
