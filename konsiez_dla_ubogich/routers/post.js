@@ -46,11 +46,13 @@ router.get('/:id', async (req, res) => {
 router.post('/:id/add-comment', async (req, res) => {
     const _id = req.params.id;
     const user = `${req.user.name} ${req.user.surname}`;
+    console.log(_id)
     try {
         const post = await Post.findById({ _id });
         post.comments.push({
             comment: {
                 author: user,
+                authorID: req.user._id,
                 comment: req.body.message
             }
         });

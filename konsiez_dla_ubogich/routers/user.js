@@ -4,6 +4,7 @@ const User = require('../models/user');
 const Post = require('../models/post');
 const passport = require('passport');
 const multer = require('multer');
+const fs = require('fs-extra')
 
 router.get('/register', (req, res) => {
     res.render('register');
@@ -22,46 +23,76 @@ router.get('/me', async (req, res) => {
     try {
         const user = await User.findOne({ _id });
         const posts = await Post.find({ authorID: user._id.toString() });
-        res.render('userInterface', { 
+        res.render('userInterface', {
             _id,
-            userData: user, 
-            posts 
+            userData: user,
+            posts
         });
     } catch (err) {
         res.status(401).send({ err })
     }
 });
 
-router.post('/me/avatar', (req, res ) => {
-
+router.get('/:id', async (req, res) => {
+    const _id = req.params.id;
+    try {
+        const user = await User.findById({ _id });
+        res.render('userProfile', user);
+        console.log(user)
+    } catch (err) { res.status(401).send({ err }) }
 })
 
-const upload = multer({
-    dest: 'images'
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+  
+  var upload = multer({ storage: storage })
+
+router.post('/me/avatar', upload.single('upload'), async (req, res) => {
+    const user = req.user;
+    console.log(req.body)
+    var img = fs.readFileSync(req.body.file.path);
+    var encode_image = img.toString('base64');
+    // Define a JSONobject for the image attributes for saving to database
+
+    var finalImg = {
+        contentType: req.file.mimetype,
+        image: new Buffer(encode_image, 'base64')
+    };
+    user.avatar = fianlImg;
+    try {
+        await user.save();
+        res.redirect('/user/me')
+    } catch { }
 })
 
 router.get('/me/active', async (req, res) => {
     const _id = req.session.passport['user'];
     try {
         const posts = await Post.find({ status: false, authorID: _id.toString() });
-        res.render('userInterface', { 
+        res.render('userInterface', {
             _id,
-            userData: req.user, 
-            posts 
+            userData: req.user,
+            posts
         }).send();
-    } catch {}
+    } catch { }
 });
 
 router.get('/me/done', async (req, res) => {
     const _id = req.session.passport['user'];
     try {
         const posts = await Post.find({ status: true, authorID: _id.toString() });
-        res.render('userInterface', { 
+        res.render('userInterface', {
             _id,
-            userData: req.user, 
-            posts 
+            userData: req.user,
+            posts
         }).send();
-    } catch {}
+    } catch { }
 });
 
 router.get('/logout', (req, res) => {
@@ -127,12 +158,12 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.post('/me/add-contact', async (req, res) => {
-    user = req.user;
+    let user = req.user;
     user.contact = req.body.contact;
     try {
         await user.save();
         res.redirect('/users/me')
-    } catch(err) { console.log(err) }
+    } catch (err) { console.log(err) }
 })
 
 module.exports = router;

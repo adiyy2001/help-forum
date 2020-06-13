@@ -10,6 +10,7 @@ const express = require('express');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const multer = require('multer');
 
 
 const app = express();
@@ -77,7 +78,7 @@ app.get('/forum', async (req, res) => {
     posts
   });
   else res.render('forum', posts)
-})
-
+});
+ 
 
 app.listen(port, () => console.log(`Server is up on port: ${port}`)); 

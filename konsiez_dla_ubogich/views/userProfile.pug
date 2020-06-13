@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .user-profile
+    .user-profile__avatar
+      img.user-profile__avatar__img
+    .user-profile__information
+      .user-profile__information__box
+        h3.user-profile__information__box__title
+          i(class="fas fa-user")  
+          span  Informacje
+        p.user-profile__information__box__info
+          p Imie:      
+            span= name
+        p.user-profile__information__box__info
+          p Nazwisko:      
+            span= surname
+        p.user-profile__information__box__info
+          p Email:  
+            span= email
+        p.user-profile__information__box__info
+          p Nick:      
+            span= nick
+        p.user-profile__information__box__info
+          p Województwo:      
+            span= voivodeship
+        p.user-profile__information__box__info
+          p Miasto:       
+            span= city

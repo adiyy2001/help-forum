@@ -7,9 +7,11 @@ block content
       figure
         img(class="profile__image")
         a
-          input(type="file", id="file", class="fa fa-user", style=" display: none;")
-          label(for="file", class="fa fa-user" style=" position: absolute; left: 50%; top:29%; transform: translate(-50%); font-size: 40px; cursor: pointer")
-        figcaption(class="profile__title") #{person}
+          form(action="/users/me/avatar", method="POST", enctype="multipart/form-data")
+            input(type="file", id="file", name="file", class="fa fa-user", style=" display: none;")
+            label(for="file", class="fa fa-user" style=" position: absolute; left: 50%; top:29%; transform: translate(-50%); font-size: 40px; cursor: pointer")
+            input(type="submit")
+          figcaption(class="profile__title") #{person}
     .data
       .data__values
         h1 Dane

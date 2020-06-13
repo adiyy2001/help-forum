@@ -1291,3 +1291,44 @@ button {
     width: 90%; }
   .comments {
     padding: 32px; } }
+
+.user-profile {
+  font-family: "Lato", sans-serif;
+  margin: 0 auto;
+  width: 40%;
+  border-radius: 20px;
+  height: 300px;
+  background-color: #e4e1e1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .user-profile__avatar {
+    width: 250px;
+    height: 200px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .user-profile__avatar__img {
+      border-radius: 50%;
+      background-color: gray;
+      width: 125px;
+      height: 125px; }
+  .user-profile__information {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: left;
+    align-items: center; }
+    .user-profile__information__box {
+      text-align: left;
+      margin-left: 3px;
+      width: 90%; }
+      .user-profile__information__box__title {
+        border-bottom: 2px solid #c5c0c0;
+        margin-bottom: 9px;
+        display: block;
+        width: 100%;
+        padding: 5px 7px; }
+      .user-profile__information__box__info {
+        margin-bottom: 6px; }
